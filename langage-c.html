@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Langage C | Portfolio Numérique ⚙️</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .c-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin: 1.2rem 0;
+      }
+      .c-mini-card {
+        background: var(--surface-2, rgba(255, 255, 255, 0.05));
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        padding: 1rem;
+      }
+      .c-mini-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+      .c-term-box {
+        background: #111827;
+        color: #e5e7eb;
+        border-left: 4px solid #f59e0b;
+        border-radius: 10px;
+        padding: 0.9rem 1.1rem;
+        margin: 0.8rem 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 0.92rem;
+        white-space: pre-wrap;
+      }
+      .c-pill-note {
+        display: inline-block;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background: rgba(245, 158, 11, 0.18);
+        margin-bottom: 0.6rem;
+      }
+    </style>
+  </head>
+  <body class="theme-c">
+    <header>
+      <div class="nav-container">
+        <a href="../index.html" class="logo">🍬 Mon Portfolio Numérique</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+          ☰
+        </button>
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">🏠 Accueil</a></li>
+          <li><a href="../digital-skills/cybersecurite.html">🛡️ Cyber</a></li>
+          <li>
+            <a href="../digital-skills/prompt-engineering.html">✨ Prompts</a>
+          </li>
+          <li>
+            <a href="../digital-skills/creation-contenu.html">🎬 Contenu</a>
+          </li>
+          <li><a href="../developpement/python.html">🐍 Python</a></li>
+          <li>
+            <a href="../developpement/langage-c.html" class="active">⚙️ C</a>
+          </li>
+          <li><a href="../developpement/algorithmique.html">🧩 Algo</a></li>
+          <li><a href="../systemes/systemes-exploitation.html">💻 OS</a></li>
+          <li>
+            <a href="../systemes/architecture-electronique.html">🔌 Archi</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="badge-pill">⚙️ Unité d'Enseignement Développement</span>
+        <h1>Programmation en Langage C</h1>
+        <p>
+          Trois programmes illustrant les bases du langage C (conditions,
+          boucles, tableaux, fonctions et pointeurs), accompagnés de leur
+          compilation GCC, traces d'exécution et comparatif avec Python[cite:
+          10].
+        </p>
+
+        <div class="c-meta-grid">
+          <div class="c-mini-card">
+            <strong>🛠️ Compilation GCC</strong>
+            <span
+              ><code>gcc -Wall -Wextra prog.c -o prog</code> pour détecter les
+              avertissements tôt.</span
+            >
+          </div>
+          <div class="c-mini-card">
+            <strong>🧠 Mémoire &amp; Adresses</strong>
+            <span
+              ><code>&amp;x</code> donne l'adresse mémoire,
+              <code>*ptr</code> lit ou modifie la valeur pointée.</span
+            >
+          </div>
+          <div class="c-mini-card">
+            <strong>🛡️ Sécurité de saisie</strong>
+            <span
+              >Toujours vérifier le retour de <code>scanf()</code> et éviter la
+              division par zéro.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="box">
+        <span class="c-pill-note">Boucles &amp; Conditions</span>
+        <h2>🔢 Programme 1 : Somme et Moyenne avec Boucles</h2>
+        <p>
+          <strong>Objectif :</strong> Lire <code>n</code> notes réelles,
+          calculer leur somme et afficher la moyenne avec vérification des cas
+          invalides[cite: 10].
+        </p>
+        <pre>
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int n, i;
+    float note, somme = 0.0f;
+
+    printf("Nombre de notes : ");
+    if (scanf("%d", &amp;n) != 1 || n &lt;= 0) {
+        printf("Erreur : veuillez saisir un entier strictement positif.\n");
+        return 1;
+    }
+
+    for (i = 1; i &lt;= n; i++) {
+        printf("Note %d : ", i);
+        if (scanf("%f", &amp;note) != 1) {
+            printf("Erreur : saisie invalide.\n");
+            return 1;
+        }
+        somme += note;
+    }
+
+    printf("Moyenne = %.2f\n", somme / n);
+    return 0;
+}</pre
+        >
+        <p><strong>Exemple d'exécution dans le terminal :</strong></p>
+        <div class="c-term-box">
+          Nombre de notes : 3 Note 1 : 13.5 Note 2 : 15 Note 3 : 16.5 Moyenne =
+          15.00
+        </div>
+        <p>
+          <strong>Points clés :</strong> L'initialisation
+          <code>somme = 0.0f</code> évite les valeurs résiduelles en mémoire, et
+          <code>%.2f</code> formate l'affichage à deux décimales[cite: 10].
+        </p>
+      </section>
+
+      <section class="box">
+        <span class="c-pill-note">Tableaux &amp; Fonctions</span>
+        <h2>📊 Programme 2 : Tableaux et Fonction de Recherche</h2>
+        <p>
+          <strong>Objectif :</strong> Parcourir un tableau d'entiers via une
+          fonction dédiée pour extraire la valeur maximale[cite: 10].
+        </p>
+        <pre>
+#include &lt;stdio.h&gt;
+
+int maximum(const int tab[], int taille) {
+    int max = tab[0];
+    for (int i = 1; i &lt; taille; i++) {
+        if (tab[i] &gt; max) {
+            max = tab[i];
+        }
+    }
+    return max;
+}
+
+int main(void) {
+    int valeurs[5] = {12, 45, 8, 67, 23};
+    printf("Maximum du tableau : %d\n", maximum(valeurs, 5));
+    return 0;
+}</pre
+        >
+        <p><strong>Exemple d'exécution dans le terminal :</strong></p>
+        <div class="c-term-box">Maximum du tableau : 67</div>
+        <p>
+          <strong>Points clés :</strong> En C, un tableau passé à une fonction
+          est transmis sous forme de pointeur vers son premier élément : il faut
+          donc passer sa <code>taille</code> explicitement[cite: 10].
+        </p>
+      </section>
+
+      <section class="box">
+        <span class="c-pill-note">Pointeurs &amp; Passage par Adresse</span>
+        <h2>🧭 Programme 3 : Échange de Deux Valeurs par Pointeurs</h2>
+        <p>
+          <strong>Objectif :</strong> Modifier directement deux variables de
+          <code>main()</code> depuis une fonction <code>echanger()</code> grâce
+          à leurs adresses mémoire[cite: 10].
+        </p>
+        <pre>
+#include &lt;stdio.h&gt;
+
+void echanger(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void) {
+    int x = 10, y = 25;
+    printf("Avant échange : x = %d, y = %d\n", x, y);
+    echanger(&amp;x, &amp;y);
+    printf("Après échange : x = %d, y = %d\n", x, y);
+    return 0;
+}</pre
+        >
+        <p><strong>Exemple d'exécution dans le terminal :</strong></p>
+        <div class="c-term-box">
+          Avant échange : x = 10, y = 25 Après échange : x = 25, y = 10
+        </div>
+        <p>
+          <strong>Points clés :</strong> Un passage par valeur classique ne
+          modifierait que des copies locales ; l'opérateur d'adresse
+          <code>&amp;</code> et la déréférenciation <code>*</code> permettent
+          d'agir sur les variables d'origine[cite: 10].
+        </p>
+      </section>
+
+      <section class="box">
+        <span class="c-pill-note">Synthèse</span>
+        <h2>⚖️ Tableau Comparatif : Python vs Langage C</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>Python</th>
+              <th>Langage C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Syntaxe</strong></td>
+              <td>
+                Très lisible, proche de l'anglais, blocs définis par
+                l'indentation[cite: 10].
+              </td>
+              <td>
+                Plus stricte, utilisation d'accolades <code>{ }</code> et de
+                points-virgules <code>;</code>[cite: 10].
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Typage</strong></td>
+              <td>
+                Dynamique (le type s'adapte automatiquement à la valeur)[cite:
+                10].
+              </td>
+              <td>
+                Statique (il faut déclarer explicitement <code>int</code>,
+                <code>float</code>, <code>char</code>)[cite: 10].
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Gestion mémoire</strong></td>
+              <td>
+                Automatique grâce au ramasse-miettes (<em>garbage collector</em
+                >)[cite: 10].
+              </td>
+              <td>
+                Manuelle via les pointeurs, <code>malloc()</code> et
+                <code>free()</code>[cite: 10].
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Rapidité</strong></td>
+              <td>
+                Langage interprété, plus lent à l'exécution mais rapide à
+                écrire[cite: 10].
+              </td>
+              <td>
+                Langage compilé (GCC) directement en code machine, très
+                rapide[cite: 10].
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Usages principaux</strong></td>
+              <td>
+                Data science, IA, scripts d'automatisation, web backend[cite:
+                10].
+              </td>
+              <td>
+                Systèmes d'exploitation, embarqué, microcontrôleurs, jeux
+                vidéo[cite: 10].
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="ia-transparency">
+        <h3>🎀 Fiche « Transparence IA »</h3>
+        <p>
+          <strong>Outils utilisés :</strong> VS Code, compilateur GCC, assistant
+          IA (explication d'erreurs)[cite: 10].
+        </p>
+        <p>
+          <strong>Rôle de l'IA :</strong> Clarification sur le passage par
+          adresse avec les pointeurs en C[cite: 10].
+        </p>
+        <p>
+          <strong>Ce que j'ai fait moi-même :</strong> Compilation et test des 3
+          programmes C avec GCC, et rédaction personnelle du comparatif
+          Python/C[cite: 10].
+        </p>
+        <p>
+          <strong>Sources vérifiées :</strong> Cours de programmation C L1 &amp;
+          documentation GCC[cite: 10].
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        🌷 Portfolio Numérique — 1ère Année Licence Technologie de
+        l'Informatique • Hébergé sur GitHub Pages[cite: 10]
+      </p>
+    </footer>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

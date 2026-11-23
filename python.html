@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python — 3 Mini-Projets | Portfolio Numérique 🐍</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="theme-python">
+    <header>
+      <div class="nav-container">
+        <a href="../index.html" class="logo">🍬 Mon Portfolio Numérique</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+          ☰
+        </button>
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">🏠 Accueil</a></li>
+          <li><a href="../digital-skills/cybersecurite.html">🛡️ Cyber</a></li>
+          <li>
+            <a href="../digital-skills/prompt-engineering.html">✨ Prompts</a>
+          </li>
+          <li>
+            <a href="../digital-skills/creation-contenu.html">🎬 Contenu</a>
+          </li>
+          <li>
+            <a href="../developpement/python.html" class="active">🐍 Python</a>
+          </li>
+          <li><a href="../developpement/langage-c.html">⚙️ C</a></li>
+          <li><a href="../developpement/algorithmique.html">🧩 Algo</a></li>
+          <li><a href="../systemes/systemes-exploitation.html">💻 OS</a></li>
+          <li>
+            <a href="../systemes/architecture-electronique.html">🔌 Archi</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="badge-pill"
+              >🐍 Unité d'Enseignement Développement</span
+            >
+            <h1>Programmation en Python</h1>
+            <p>
+              Trois mini-projets pratiques illustrant les structures
+              conditionnelles, boucles, listes, fonctions et la gestion
+              d'erreurs en Python.
+            </p>
+          </div>
+          <figure class="media-frame">
+            <img
+              src="pyth.jfif"
+              alt="Espace de développement Python et C avec terminal et organigrammes"
+            />
+            <figcaption>Thème Jungle Emerald &amp; Gold</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="box">
+        <h2>🧮 Mini-Projet 1 : Calculatrice Interactive</h2>
+        <p>
+          <strong>Description du problème :</strong> Réaliser un programme en
+          console permettant d'effectuer les 4 opérations de base (+, -, *, /)
+          avec gestion de la division par zéro et des erreurs de saisie.
+        </p>
+        <pre>
+def calculatrice():
+    try:
+        a = float(input("Premier nombre : "))
+        op = input("Opération (+, -, *, /) : ").strip()
+        b = float(input("Deuxième nombre : "))
+    except ValueError:
+        print("Erreur : veuillez saisir des nombres valides.")
+        return
+
+    if op == "+":
+        print("Résultat :", a + b)
+    elif op == "-":
+        print("Résultat :", a - b)
+    elif op == "*":
+        print("Résultat :", a * b)
+    elif op == "/":
+        if b == 0:
+            print("Erreur : division par zéro impossible.")
+        else:
+            print("Résultat :", a / b)
+    else:
+        print("Opérateur invalide.")
+
+calculatrice()</pre
+        >
+        <p><strong>Exemple d'exécution :</strong></p>
+        <pre>
+Premier nombre : 12
+Opération (+, -, *, /) : /
+Deuxième nombre : 4
+Résultat : 3.0</pre
+        >
+        <p>
+          <strong>Explication :</strong> La fonction lit deux nombres flottants
+          et teste l'opérateur avec <code>if/elif/else</code>. Le bloc
+          <code>try/except ValueError</code> évite le plantage si l'utilisateur
+          saisit du texte, et le test <code>b == 0</code> protège la division.
+        </p>
+        <p>
+          <strong>Difficulté rencontrée &amp; solution :</strong>
+          <code>input()</code> renvoie une chaîne de caractères et peut
+          provoquer une erreur de conversion ; résolu avec <code>float()</code>,
+          <code>.strip()</code> et <code>try/except</code>.
+        </p>
+      </section>
+
+      <section class="box">
+        <h2>🎲 Mini-Projet 2 : Jeu de Devinettes (Nombre Mystère)</h2>
+        <p>
+          <strong>Description du problème :</strong> L'ordinateur choisit un
+          entier aléatoire entre 1 et 50 et guide l'utilisateur (« Trop petit »
+          / « Trop grand ») jusqu'à la bonne réponse en comptant les essais.
+        </p>
+        <pre>
+import random
+
+secret = random.randint(1, 50)
+essais = 0
+trouve = False
+
+while not trouve:
+    try:
+        proposition = int(input("Devine le nombre (1 à 50) : "))
+    except ValueError:
+        print("Veuillez entrer un entier valide.")
+        continue
+
+    essais += 1
+    if proposition &lt; secret:
+        print("Trop petit !")
+    elif proposition &gt; secret:
+        print("Trop grand !")
+    else:
+        print(f"Bravo ! Trouvé en {essais} essai(s).")
+        trouve = True</pre
+        >
+        <p><strong>Exemple d'exécution :</strong></p>
+        <pre>
+Devine le nombre (1 à 50) : 25
+Trop grand !
+Devine le nombre (1 à 50) : 14
+Bravo ! Trouvé en 2 essai(s).</pre
+        >
+        <p>
+          <strong>Explication :</strong> La boucle <code>while</code> répète la
+          saisie tant que <code>trouve</code> est faux, incrémente
+          <code>essais</code> à chaque tentative valide et compare avec le
+          nombre secret.
+        </p>
+        <p>
+          <strong>Difficulté rencontrée &amp; solution :</strong> Oublier
+          d'incrémenter <code>essais</code> ou bloquer sur une saisie non
+          entière ; corrigé avec <code>essais += 1</code> après validation et
+          <code>try/except ValueError</code>.
+        </p>
+      </section>
+
+      <section class="box">
+        <h2>📒 Mini-Projet 3 : Gestionnaire de Notes Étudiant</h2>
+        <p>
+          <strong>Description du problème :</strong> Stocker les notes d'un
+          étudiant dans une liste, calculer la moyenne, la note
+          maximale/minimale et déterminer l'admission (moyenne ≥ 10).
+        </p>
+        <pre>
+notes = []
+try:
+    n = int(input("Combien de matières ? "))
+except ValueError:
+    print("Erreur : veuillez entrer un entier.")
+    n = 0
+
+for i in range(n):
+    while True:
+        try:
+            note = float(input(f"Note {i+1} (/20) : "))
+            if 0 &lt;= note &lt;= 20:
+                notes.append(note)
+                break
+            else:
+                print("La note doit être comprise entre 0 et 20.")
+        except ValueError:
+            print("Veuillez saisir un nombre valide.")
+
+if notes:
+    moyenne = sum(notes) / len(notes)
+    print("Notes :", notes)
+    print(f"Moyenne : {moyenne:.2f} | Min : {min(notes)} | Max : {max(notes)}")
+    print("Statut :", "Admis ✅" if moyenne &gt;= 10 else "Ajourné ❌")
+else:
+    print("Aucune note enregistrée.")</pre
+        >
+        <p><strong>Exemple d'exécution :</strong></p>
+        <pre>
+Combien de matières ? 3
+Note 1 (/20) : 14
+Note 2 (/20) : 11.5
+Note 3 (/20) : 16.5
+Notes : [14.0, 11.5, 16.5]
+Moyenne : 14.00 | Min : 11.5 | Max : 16.5
+Statut : Admis ✅</pre
+        >
+        <p>
+          <strong>Explication :</strong> Les notes validées (entre 0 et 20) sont
+          ajoutées dans la liste <code>notes</code> via <code>append()</code>,
+          puis analysées avec <code>sum()</code>, <code>len()</code>,
+          <code>min()</code> et <code>max()</code>.
+        </p>
+        <p>
+          <strong>Difficulté rencontrée &amp; solution :</strong> Formater la
+          moyenne à 2 décimales et éviter la division par zéro si la liste est
+          vide ; résolu avec <code>{moyenne:.2f}</code> et le test
+          <code>if notes:</code>.
+        </p>
+      </section>
+
+      <section class="ia-transparency">
+        <h3>🎀 Fiche « Transparence IA »</h3>
+        <p>
+          <strong>Outils utilisés :</strong> VS Code, interpréteur Python 3,
+          assistant IA (relecture).
+        </p>
+        <p>
+          <strong>Rôle de l'IA :</strong> Vérification de la gestion des cas
+          limites (division par zéro, erreurs de saisie) et mise en page HTML.
+        </p>
+        <p>
+          <strong>Ce que j'ai fait moi-même :</strong> Écriture des 3 scripts
+          Python, exécution dans le terminal VS Code et rédaction des
+          explications.
+        </p>
+        <p>
+          <strong>Sources vérifiées :</strong> Cours de programmation Python L1
+          &amp; documentation officielle Python.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        🌷 Portfolio Numérique — 1ère Année Licence Technologie de
+        l'Informatique • Hébergé sur GitHub Pages
+      </p>
+    </footer>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithmique | Portfolio Numérique 🧩</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="theme-algo">
+    <header>
+      <div class="nav-container">
+        <a href="../index.html" class="logo">🍬 Mon Portfolio Numérique</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+          ☰
+        </button>
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">🏠 Accueil</a></li>
+          <li><a href="../digital-skills/cybersecurite.html">🛡️ Cyber</a></li>
+          <li>
+            <a href="../digital-skills/prompt-engineering.html">✨ Prompts</a>
+          </li>
+          <li>
+            <a href="../digital-skills/creation-contenu.html">🎬 Contenu</a>
+          </li>
+          <li><a href="../developpement/python.html">🐍 Python</a></li>
+          <li><a href="../developpement/langage-c.html">⚙️ C</a></li>
+          <li>
+            <a href="../developpement/algorithmique.html" class="active"
+              >🧩 Algo</a
+            >
+          </li>
+          <li><a href="../systemes/systemes-exploitation.html">💻 OS</a></li>
+          <li>
+            <a href="../systemes/architecture-electronique.html">🔌 Archi</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="badge-pill">🧩 Unité d'Enseignement Développement</span>
+        <h1>Algorithmique &amp; Structures de Données</h1>
+        <p>
+          Trois algorithmes fondamentaux présentés avec leur idée générale,
+          pseudo-code, complexité, exemple pas à pas, implémentation et
+          visualisation interactive.
+        </p>
+      </section>
+
+      <section class="box">
+        <h2>🏆 Algorithme 1 : Recherche du Maximum dans un Tableau</h2>
+        <p>
+          <strong>Idée générale :</strong> On suppose que le premier élément est
+          le plus grand, puis on parcourt le reste du tableau en mettant à jour
+          <code>max</code> dès qu'on trouve une valeur supérieure.
+        </p>
+        <pre>
+Algorithme RechercheMax
+Variables : T : Tableau[1..N] d'Entiers, max, i : Entiers
+Début
+    max ← T[1]
+    Pour i de 2 à N Faire
+        Si T[i] &gt; max Alors
+            max ← T[i]
+        FinSi
+    FinPour
+    Afficher("Maximum = ", max)
+Fin</pre
+        >
+        <p>
+          <strong>Complexité :</strong> Temporelle en $O(n)$ (un seul parcours
+          du tableau) et spatiale en $O(1)$.
+        </p>
+        <p>
+          <strong
+            >Exemple pas à pas sur <code>[12, 45, 8, 67, 23]</code> :</strong
+          >
+          Initialisation <code>max = 12</code> → 45 &gt; 12 (<code
+            >max = 45</code
+          >) → 8 &lt; 45 (inchangé) → 67 &gt; 45 (<code>max = 67</code>) → 23
+          &lt; 67 (inchangé). Résultat : <strong>67</strong>.
+        </p>
+        <pre>
+def recherche_max(T):
+    maximum = T[0]
+    for val in T[1:]:
+        if val &gt; maximum:
+            maximum = val
+    return maximum
+
+# Exemple d'exécution
+print("Maximum :", recherche_max([12, 45, 8, 67, 23]))</pre
+        >
+      </section>
+
+      <section class="box">
+        <h2>🫧 Algorithme 2 : Tri à Bulles + Visualiseur Interactif</h2>
+        <p>
+          <strong>Idée générale :</strong> Comparer répétitivement les éléments
+          adjacents et les permuter s'ils sont dans le mauvais ordre, faisant «
+          remonter » les plus grandes valeurs à la fin.
+        </p>
+        <pre>
+Algorithme TriBulles
+Variables : T : Tableau[1..N] d'Entiers, i, j, temp : Entiers
+Début
+    Pour i de 1 à N - 1 Faire
+        Pour j de 1 à N - i Faire
+            Si T[j] &gt; T[j + 1] Alors
+                temp ← T[j]
+                T[j] ← T[j + 1]
+                T[j + 1] ← temp
+            FinSi
+        FinPour
+    FinPour
+Fin</pre
+        >
+        <p>
+          <strong>Complexité :</strong> Temporelle en $O(n^2)$ dans le pire cas
+          et cas moyen ($O(n)$ si déjà trié avec booléen d'échange), et spatiale
+          en $O(1)$.
+        </p>
+        <p>
+          <strong
+            >Exemple pas à pas sur <code>[4, 2, 3, 1]</code> (1er passage)
+            :</strong
+          >
+          (4,2) → échange → <code>[2, 4, 3, 1]</code> ; (4,3) → échange →
+          <code>[2, 3, 4, 1]</code> ; (4,1) → échange →
+          <code>[2, 3, 1, 4]</code> (4 est placé à la fin).
+        </p>
+        <pre>
+def tri_bulles(T):
+    n = len(T)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if T[j] &gt; T[j + 1]:
+                T[j], T[j + 1] = T[j + 1], T[j]
+    return T
+
+# Exemple d'exécution
+print("Trié :", tri_bulles([4, 2, 3, 1]))</pre
+        >
+        <div
+          id="tri-bars"
+          style="
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 220px;
+            padding: 1rem;
+            background: var(--surface-2);
+            border-radius: 14px;
+            margin: 1rem 0;
+          "
+        ></div>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap">
+          <button type="button" class="btn" onclick="lancerTriBulles()">
+            ▶️ Lancer le tri animé
+          </button>
+          <button type="button" class="btn" onclick="melangerTri()">
+            🔀 Mélanger les valeurs
+          </button>
+        </div>
+      </section>
+
+      <section class="box">
+        <h2>🔍 Algorithme 3 : Recherche Dichotomique (Tableau Trié)</h2>
+        <p>
+          <strong>Idée générale :</strong> Diviser par deux l'intervalle de
+          recherche à chaque étape en comparant la valeur cherchée
+          <code>x</code> avec l'élément central <code>T[milieu]</code>.
+        </p>
+        <pre>
+Algorithme RechercheDichotomique
+Variables : T : Tableau[1..N] trié, x, debut, fin, milieu : Entiers, trouve : Booléen
+Début
+    debut ← 1 ; fin ← N ; trouve ← Faux
+    TantQue (debut &lt;= fin) Et (Non trouve) Faire
+        milieu ← (debut + fin) DIV 2
+        Si T[milieu] = x Alors
+            trouve ← Vrai
+        SinonSi T[milieu] &lt; x Alors
+            debut ← milieu + 1
+        Sinon
+            fin ← milieu - 1
+        FinSi
+    FinTantQue
+Fin</pre
+        >
+        <p>
+          <strong>Complexité :</strong> Temporelle en $O(\log n)$ (division de
+          l'intervalle par 2 à chaque itération) et spatiale en $O(1)$.
+        </p>
+        <p>
+          <strong
+            >Exemple pas à pas pour <code>x = 53</code> dans
+            <code>[9, 15, 27, 42, 53, 78]</code> :</strong
+          >
+        </p>
+        <ul>
+          <li>
+            <strong>Itération 1 :</strong> <code>debut = 1</code>,
+            <code>fin = 6</code>, <code>milieu = 3</code> →
+            <code>T[3] = 27 &lt; 53</code>, donc <code>debut = 4</code>.
+          </li>
+          <li>
+            <strong>Itération 2 :</strong> <code>debut = 4</code>,
+            <code>fin = 6</code>, <code>milieu = 5</code> →
+            <code>T[5] = 53 = x</code>, trouvé à l'indice <strong>5</strong> !
+          </li>
+        </ul>
+        <pre>
+def recherche_dichotomique(T, x):
+    debut, fin = 0, len(T) - 1
+    while debut &lt;= fin:
+        milieu = (debut + fin) // 2
+        if T[milieu] == x:
+            return milieu
+        elif T[milieu] &lt; x:
+            debut = milieu + 1
+        else:
+            fin = milieu - 1
+    return -1
+
+# Exemple d'exécution (indice 0-based : 4)
+print("Indice :", recherche_dichotomique([9, 15, 27, 42, 53, 78], 53))</pre
+        >
+      </section>
+
+      <section class="ia-transparency">
+        <h3>🎀 Fiche « Transparence IA »</h3>
+        <p>
+          <strong>Outils utilisés :</strong> VS Code, assistant IA, Canva
+          (schémas).
+        </p>
+        <p>
+          <strong>Rôle de l'IA :</strong> Aide à la création de l'animation
+          JavaScript du tri à bulles et structuration des explications.
+        </p>
+        <p>
+          <strong>Ce que j'ai fait moi-même :</strong> Écriture des
+          pseudo-codes, traces d'exécution pas à pas, analyse des complexités et
+          implémentation des algorithmes.
+        </p>
+        <p>
+          <strong>Sources vérifiées :</strong> Cours d'Algorithmique et
+          Structures de Données L1.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        🌷 Portfolio Numérique — 1ère Année Licence Technologie de
+        l'Informatique • Hébergé sur GitHub Pages
+      </p>
+    </footer>
+    <script src="../js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => afficherBarresTri());
+    </script>
+  </body>
+</html>

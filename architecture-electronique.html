@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Architecture & Électronique | Portfolio Numérique 🔌</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="theme-archi">
+    <header>
+      <div class="nav-container">
+        <a href="../index.html" class="logo">🍬 Mon Portfolio Numérique</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+          ☰
+        </button>
+        <ul id="nav-links" class="nav-links">
+          <li><a href="../index.html">🏠 Accueil</a></li>
+          <li><a href="../digital-skills/cybersecurite.html">🛡️ Cyber</a></li>
+          <li>
+            <a href="../digital-skills/prompt-engineering.html">✨ Prompts</a>
+          </li>
+          <li>
+            <a href="../digital-skills/creation-contenu.html">🎬 Contenu</a>
+          </li>
+          <li><a href="../developpement/python.html">🐍 Python</a></li>
+          <li><a href="../developpement/langage-c.html">⚙️ C</a></li>
+          <li><a href="../developpement/algorithmique.html">🧩 Algo</a></li>
+          <li><a href="../systemes/systemes-exploitation.html">💻 OS</a></li>
+          <li>
+            <a href="../systemes/architecture-electronique.html" class="active"
+              >🔌 Archi</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="badge-pill"
+              >🔌 Systèmes d'Exploitation &amp; Fondements</span
+            >
+            <h1>Architecture des Ordinateurs &amp; Électronique</h1>
+            <p>
+              Du modèle de Von Neumann aux systèmes de numération (binaire,
+              hexadécimal) et aux portes logiques numériques.
+            </p>
+          </div>
+          <figure class="media-frame">
+            <img
+              src="pro.jfif"
+              alt="Processeur et bus de communication matériels"
+            />
+            <figcaption>Thème Cyber Circuit</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="box">
+        <h2>🏗️ 1. Architecture de Von Neumann</h2>
+        <div class="grid-cards">
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Processeur (CPU)</h3>
+            <p>
+              Composé de l'<strong>UAL</strong> (calculs arithmétiques et
+              logiques), de l'<strong>Unité de Contrôle</strong> (décodage) et
+              des <strong>registres</strong> (PC, IR, accumulateur).
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">💾</div>
+            <h3>Mémoire Centrale (RAM)</h3>
+            <p>
+              Stocke temporairement les instructions des programmes actifs et
+              leurs données.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🖥️</div>
+            <h3>Entrées / Sorties (E/S)</h3>
+            <p>
+              Assurent l'échange d'informations avec les périphériques externes
+              et le stockage.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛤️</div>
+            <h3>Les 3 Bus Système</h3>
+            <p>
+              <strong>Bus de données</strong> (transport),
+              <strong>bus d'adresses</strong> (localisation mémoire) et
+              <strong>bus de contrôle</strong> (synchronisation).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="box">
+        <h2>🔢 2. Systèmes de Numération &amp; Conversions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Décimal (Base 10)</th>
+              <th>Binaire (Base 2)</th>
+              <th>Hexadécimal (Base 16)</th>
+              <th>Explication rapide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10</td>
+              <td>0000 1010</td>
+              <td>0x0A</td>
+              <td>8 + 2 = 10 ; 10 s'écrit <code>A</code> en hexa.</td>
+            </tr>
+            <tr>
+              <td>42</td>
+              <td>0010 1010</td>
+              <td>0x2A</td>
+              <td>
+                <code>0010</code> = 2 et <code>1010</code> = A →
+                <code>2A</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>255</td>
+              <td>1111 1111</td>
+              <td>0xFF</td>
+              <td>Valeur maximale sur 1 octet (8 bits).</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="box">
+        <h2>⚡ 3. Électronique Numérique : Simulateur de Portes Logiques</h2>
+        <p>
+          Active ou désactive les entrées <strong>A</strong> et
+          <strong>B</strong> pour tester les portes logiques en direct :
+        </p>
+        <div
+          style="display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1rem 0"
+        >
+          <label class="tag"
+            ><input type="checkbox" id="input-a" onchange="calculerPortes()" />
+            Entrée A (1 = Vrai)</label
+          >
+          <label class="tag"
+            ><input type="checkbox" id="input-b" onchange="calculerPortes()" />
+            Entrée B (1 = Vrai)</label
+          >
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>AND (A · B)</th>
+              <th>OR (A + B)</th>
+              <th>XOR (A ⊕ B)</th>
+              <th>NAND</th>
+              <th>NOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="out-and" style="font-weight: 800; font-size: 1.2rem">
+                0
+              </td>
+              <td id="out-or" style="font-weight: 800; font-size: 1.2rem">0</td>
+              <td id="out-xor" style="font-weight: 800; font-size: 1.2rem">
+                0
+              </td>
+              <td id="out-nand" style="font-weight: 800; font-size: 1.2rem">
+                1
+              </td>
+              <td id="out-nor" style="font-weight: 800; font-size: 1.2rem">
+                1
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="ia-transparency">
+        <h3>🎀 Fiche « Transparence IA »</h3>
+        <p>
+          <strong>Outils utilisés :</strong> VS Code, simulateur logique,
+          assistant IA.
+        </p>
+        <p>
+          <strong>Rôle de l'IA :</strong> Structuration de la page et
+          vérification des conversions binaire-hexadécimal.
+        </p>
+        <p>
+          <strong>Ce que j'ai fait moi-même :</strong> Réalisation du simulateur
+          JavaScript et synthèse du cours d'architecture.
+        </p>
+        <p>
+          <strong>Sources vérifiées :</strong> Cours d'Architecture des
+          Ordinateurs et Systèmes Logiques L1.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>
+        🌷 Portfolio Numérique — 1ère Année Licence Technologie de
+        l'Informatique • Hébergé sur GitHub Pages
+      </p>
+    </footer>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
